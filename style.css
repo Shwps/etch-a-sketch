@@ -1,0 +1,13 @@
+.container {
+    padding: 2px;
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    max-width: 960px;
+    max-height: 960px;
+    height: 960px;
+    border:solid;
+}
+
+.drawn {
+    background: black;
+}
