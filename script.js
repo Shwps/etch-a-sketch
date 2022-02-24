@@ -1,8 +1,6 @@
-const container = document.querySelector(".container");
+const drawSurface = document.querySelector(".drawSurface");
 
-const userInputSize = document.querySelector("#size").value;
-
-const saveButton = document.querySelector(".save");
+const changeSize = document.querySelector(".changeSize");
 
 let mouseDown = false;
 document.body.onmousedown = () => (mouseDown = true);
@@ -10,22 +8,22 @@ document.body.onmouseup = () => (mouseDown = false);
 
 let gridSize = 16;
 
-saveButton.addEventListener("click", () => updateGrid());
+changeSize.addEventListener("click", () => updateGrid());
 
 function updateGrid() {
   do {
     gridSize = prompt("What size?");
-  } while (gridSize < 0 || gridSize > 100);
+  } while (gridSize < 1 || gridSize > 100);
   establishGrid(gridSize);
 }
 
 function establishGrid(gridSize) {
-  while (container.firstChild) {
-    container.removeChild(container.firstChild);
+  while (drawSurface.firstChild) {
+    drawSurface.removeChild(drawSurface.firstChild);
   }
   for (let i = 0; i < gridSize ** 2; i++) {
     const gridElement = document.createElement("div");
-    container.setAttribute(
+    drawSurface.setAttribute(
       "style",
       `grid-template-columns: repeat(${gridSize}, 1fr);`
     );
@@ -33,7 +31,7 @@ function establishGrid(gridSize) {
     gridElement.setAttribute("style", "background:; width:auto; height:auto; ");
     gridElement.addEventListener("mouseover", changeColor);
     gridElement.addEventListener("mousedown", changeColor);
-    container.appendChild(gridElement);
+    drawSurface.appendChild(gridElement);
   }
 }
 
@@ -45,3 +43,7 @@ function changeColor (e) {
 }
 
 const gridElements = document.querySelectorAll(".gridElement");
+
+window.onload = () => {
+  establishGrid(16);
+}
