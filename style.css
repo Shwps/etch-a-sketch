@@ -2,9 +2,10 @@
     padding: 2px;
     display: grid;
     grid-template-columns: repeat(16, 1fr);
-    max-width: 960px;
-    max-height: 960px;
-    height: 960px;
+    max-width: 760px;
+    max-height: 760px;
+    width: 760px;
+    height: 760px;
     border:solid;
 }
 
@@ -19,4 +20,9 @@
     text-align: center;
     border-radius: 5px;
     color:white;
+}
+
+.gridElement {
+    border:solid red;
+    
 }
